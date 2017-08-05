@@ -14,3 +14,4 @@
 /home/lab6936/fj22-ingressos/src/main/java/br/com/caelum/ingresso/model/Sala.java
 /home/lab6936/fj22-ingressos/src/main/java/br/com/caelum/ingresso/model/form/LugarForm.java
 /home/lab6936/fj22-ingressos/src/main/java/br/com/caelum/ingresso/controller/SessaoController.java
+/home/lab6936/fj22-ingressos/src/main/java/br/com/caelum/ingresso/model/descontos/Desconto.java
