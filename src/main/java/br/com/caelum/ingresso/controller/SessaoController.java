@@ -16,11 +16,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.caelum.ingresso.dao.FilmeDao;
+import br.com.caelum.ingresso.dao.LugarDao;
 import br.com.caelum.ingresso.dao.SalaDao;
 import br.com.caelum.ingresso.dao.SessaoDao;
+import br.com.caelum.ingresso.model.Carrinho;
 import br.com.caelum.ingresso.model.ImagemDaCapa;
 import br.com.caelum.ingresso.model.Sessao;
 import br.com.caelum.ingresso.model.descontos.TipoDeIngresso;
+import br.com.caelum.ingresso.model.form.CarrinhoForm;
 import br.com.caelum.ingresso.model.form.SessaoForm;
 import br.com.caelum.ingresso.rest.ImdbClient;
 import br.com.caelum.ingresso.validacao.GerenciadorDeSessao;
@@ -38,11 +41,16 @@ public class SessaoController {
 	private SessaoDao sessaoDao;
 	
 	@Autowired
+	private LugarDao lugarDao;
+	
+	@Autowired
 	private ImdbClient client;
 	
+	@Autowired
+	private Carrinho carrinho;
+	
 	@GetMapping("/admin/sessao")
-	public ModelAndView form(@RequestParam("salaId") Integer salaId, SessaoForm form)
-	{
+	public ModelAndView form(@RequestParam("salaId") Integer salaId, SessaoForm form) {
 		form.setSalaId(salaId);
 		ModelAndView modelAndView = new ModelAndView ("sessao/sessao");
 		modelAndView.addObject("sala",salaDao.findOne(salaId));
@@ -73,11 +81,10 @@ public class SessaoController {
 		Optional<ImagemDaCapa> imagemCapa = client.request(sessao.getFilme(), ImagemDaCapa.class);
 		
 		modelAndView.addObject("sessao", sessao);
-		modelAndView.addObject("imagemCapa", imagemCapa);
+		modelAndView.addObject("carrinho", carrinho);
+		modelAndView.addObject("imagemCapa", imagemCapa.orElse(new ImagemDaCapa()));
 		modelAndView.addObject("tiposDeIngressos", TipoDeIngresso.values());
 		
 		return modelAndView;
 	}
-	
-	
 }

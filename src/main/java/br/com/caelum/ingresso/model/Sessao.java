@@ -90,8 +90,6 @@ public class Sessao {
 		return this.horario.plus(filme.getDuracao().toMinutes(), ChronoUnit.MINUTES);
 	}
 	
-	
-	
 	public Map<String, List<Lugar>> getMapaDeLugares (){
 		return sala.getMapaDeLugares();
 	}
