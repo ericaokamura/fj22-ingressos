@@ -1,6 +1,7 @@
 /home/lab6936/fj22-ingressos/src/main/java/br/com/caelum/ingresso/controller/FilmeController.java
 /home/lab6936/fj22-ingressos/src/main/java/br/com/caelum/ingresso/validacao/GerenciadorDeSessao.java
 /home/lab6936/fj22-ingressos/src/main/java/br/com/caelum/ingresso/model/form/SessaoForm.java
+/home/lab6936/fj22-ingressos/src/main/java/br/com/caelum/ingresso/model/ImagemDaCapa.java
 /home/lab6936/fj22-ingressos/src/main/java/br/com/caelum/ingresso/dao/LugarDao.java
 /home/lab6936/fj22-ingressos/src/main/java/br/com/caelum/ingresso/rest/ImdbClient.java
 /home/lab6936/fj22-ingressos/src/main/java/br/com/caelum/ingresso/dao/SessaoDao.java

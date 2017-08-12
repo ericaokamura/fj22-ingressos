@@ -3,6 +3,7 @@ br/com/caelum/ingresso/model/Lugar.class
 br/com/caelum/ingresso/model/descontos/DescontoEstudante.class
 br/com/caelum/ingresso/model/DetalhesDoFilme.class
 br/com/caelum/ingresso/controller/SalaController.class
+br/com/caelum/ingresso/model/ImagemDaCapa.class
 br/com/caelum/ingresso/controller/FilmeController.class
 br/com/caelum/ingresso/model/Filme.class
 br/com/caelum/ingresso/rest/ImdbClient.class
