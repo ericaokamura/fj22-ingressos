@@ -20,6 +20,7 @@ import br.com.caelum.ingresso.dao.SalaDao;
 import br.com.caelum.ingresso.dao.SessaoDao;
 import br.com.caelum.ingresso.model.ImagemDaCapa;
 import br.com.caelum.ingresso.model.Sessao;
+import br.com.caelum.ingresso.model.descontos.TipoDeIngresso;
 import br.com.caelum.ingresso.model.form.SessaoForm;
 import br.com.caelum.ingresso.rest.ImdbClient;
 import br.com.caelum.ingresso.validacao.GerenciadorDeSessao;
@@ -73,6 +74,8 @@ public class SessaoController {
 		
 		modelAndView.addObject("sessao", sessao);
 		modelAndView.addObject("imagemCapa", imagemCapa);
+		modelAndView.addObject("tiposDeIngressos", TipoDeIngresso.values());
+		
 		return modelAndView;
 	}
 	

@@ -5,12 +5,15 @@ import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
-import org.hibernate.annotations.Entity;
-import org.springframework.data.annotation.Id;
+
 
 @Entity
 public class Sessao {
@@ -28,13 +31,17 @@ public class Sessao {
 	
 	private BigDecimal preco;
 	
+	@OneToMany
+	private Set<Ingresso> ingressos;
+	
+	
 	public Sessao() {
 		
 	}
 	
 	public Sessao(LocalTime horario, Filme filme, Sala sala) {
 		this.horario = horario;
-		this.setFilme(filme);
+		this.filme = filme;
 		this.sala = sala;
 		this.preco = sala.getPreco().add(filme.getPreco());
 	}
@@ -83,7 +90,23 @@ public class Sessao {
 		return this.horario.plus(filme.getDuracao().toMinutes(), ChronoUnit.MINUTES);
 	}
 	
+	
+	
 	public Map<String, List<Lugar>> getMapaDeLugares (){
 		return sala.getMapaDeLugares();
 	}
+	
+	public boolean isDisponivel (Lugar lugar) {
+		return ingressos.stream().map(Ingresso::getLugar).noneMatch(l->l.equals(lugar));
+	}
+
+	public Set<Ingresso> getIngressos() {
+		return ingressos;
+	}
+
+	public void setIngressos(Set<Ingresso> ingressos) {
+		this.ingressos = ingressos;
+	}
+
+	
 }
